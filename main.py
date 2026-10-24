@@ -65,6 +65,9 @@ def login():
         if check_password_hash(user.password, request.form.get('password')):
             login_user(user)
             return redirect(url_for('secrets'))
+    else:
+        flash('This email does not exist, please try again.')
+        return redirect(url_for('login'))
     return render_template("login.html")
 
 
